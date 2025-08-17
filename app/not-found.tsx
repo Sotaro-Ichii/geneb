@@ -15,7 +15,7 @@ export default function NotFound() {
           <p className="text-slate-600 mb-8">
             お探しのページは存在しないか、移動または削除された可能性があります。
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/">
               <Button className="w-full sm:w-auto">
@@ -23,8 +23,8 @@ export default function NotFound() {
                 ホームに戻る
               </Button>
             </Link>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full sm:w-auto"
               onClick={() => window.history.back()}
             >

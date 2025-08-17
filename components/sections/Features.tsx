@@ -2,10 +2,10 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { getCurrentContent } from '@/content/constants';
-import { 
-  Zap, 
-  GraduationCap, 
-  Smartphone, 
+import {
+  Zap,
+  GraduationCap,
+  Smartphone,
   Globe,
   Brain,
   BarChart3,
@@ -48,10 +48,10 @@ export default function Features() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {content.features.items.map((feature, index) => {
             const IconComponent = iconMap[feature.icon as keyof typeof iconMap];
-            
+
             return (
-              <Card 
-                key={index} 
+              <Card
+                key={index}
                 className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-slate-50"
               >
                 <CardContent className="p-8 text-center">

@@ -38,7 +38,9 @@ describe('Hero Component', () => {
 
   it('has a CTA button', () => {
     render(<Hero />);
-    expect(screen.getByRole('link', { name: /テスト用CTA/ })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /テスト用CTA/ })
+    ).toBeInTheDocument();
   });
 
   it('displays the brand name', () => {

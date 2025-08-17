@@ -59,7 +59,12 @@ export function GAScript() {
 }
 
 // Utility functions for tracking events
-export const trackEvent = (action: string, category: string, label?: string, value?: number) => {
+export const trackEvent = (
+  action: string,
+  category: string,
+  label?: string,
+  value?: number
+) => {
   if (typeof window.gtag !== 'undefined') {
     window.gtag('event', action, {
       event_category: category,

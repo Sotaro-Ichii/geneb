@@ -23,8 +23,8 @@ export default function FAQ() {
 
         <Accordion type="single" collapsible className="space-y-4">
           {content.faq.items.map((faq, index) => (
-            <AccordionItem 
-              key={index} 
+            <AccordionItem
+              key={index}
               value={`item-${index}`}
               className="border border-slate-200 rounded-xl px-6 shadow-sm hover:shadow-md transition-shadow duration-300"
             >

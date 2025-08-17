@@ -28,7 +28,7 @@ export default function Error({
           <p className="text-slate-600 mb-8">
             申し訳ございません。一時的な問題が発生しています。しばらく時間をおいてから再度お試しください。
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button onClick={reset} className="w-full sm:w-auto">
               <RefreshCw className="w-4 h-4 mr-2" />

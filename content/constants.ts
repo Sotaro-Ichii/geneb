@@ -73,8 +73,10 @@ interface ContentConfig {
 export const SITE_CONFIG = {
   brand: 'geneb',
   primaryClaim: 'AI制作で速く、安く、本気のLPを。',
-  commonNote: 'genebはBolt + Cursorを活用し、短納期・低コストで納品します。安さの理由はAI効率化による作業時間の短縮です。',
-  contactUrl: process.env.NEXT_PUBLIC_CONTACT_URL || 'https://forms.gle/example',
+  commonNote:
+    'genebはBolt + Cursorを活用し、短納期・低コストで納品します。安さの理由はAI効率化による作業時間の短縮です。',
+  contactUrl:
+    process.env.NEXT_PUBLIC_CONTACT_URL || 'https://forms.gle/example',
   formEmbedCode: process.env.NEXT_PUBLIC_FORM_EMBED_CODE || '',
   taxNote: process.env.NEXT_PUBLIC_TAX_NOTE || '※価格は税込です',
   // Common pricing notes
@@ -96,7 +98,11 @@ export const generateCTALink = (mode: Mode, section?: string) => {
 };
 
 // Utility function for generating aria-label
-export const generateAriaLabel = (mode: Mode, action: string, section?: string) => {
+export const generateAriaLabel = (
+  mode: Mode,
+  action: string,
+  section?: string
+) => {
   const modeLabels = {
     portfolio: 'ポートフォリオ',
     corporate: 'コーポレートサイト',
@@ -109,9 +115,11 @@ export const MODE_CONTENT: Record<Mode, ContentConfig> = {
   portfolio: {
     meta: {
       title: '最短3日、AIで作るあなたの未来のポートフォリオ | geneb',
-      description: '就活・インターンに間に合う、AI制作のポートフォリオ。学生向け価格で高品質なポートフォリオを最短3日で納品。',
+      description:
+        '就活・インターンに間に合う、AI制作のポートフォリオ。学生向け価格で高品質なポートフォリオを最短3日で納品。',
       ogTitle: '最短3日、AIで作るあなたの未来のポートフォリオ',
-      ogDescription: '就活・インターンに間に合う、AI制作のポートフォリオ。学生向け価格で高品質なポートフォリオを最短3日で納品。',
+      ogDescription:
+        '就活・インターンに間に合う、AI制作のポートフォリオ。学生向け価格で高品質なポートフォリオを最短3日で納品。',
     },
     hero: {
       headline: '最短3日、AIで作るあなたの未来のポートフォリオ',
@@ -246,15 +254,18 @@ export const MODE_CONTENT: Record<Mode, ContentConfig> = {
       items: [
         {
           question: '本当に3日で完成しますか？',
-          answer: 'はい、AIを活用することで従来の1/3の時間で制作可能です。ただし、修正回数によっては期間が延びる場合があります。',
+          answer:
+            'はい、AIを活用することで従来の1/3の時間で制作可能です。ただし、修正回数によっては期間が延びる場合があります。',
         },
         {
           question: '学生でも分割払いできますか？',
-          answer: 'はい、学生の皆様には柔軟な支払いプランをご提案しています。詳しくはお問い合わせください。',
+          answer:
+            'はい、学生の皆様には柔軟な支払いプランをご提案しています。詳しくはお問い合わせください。',
         },
         {
           question: '修正は何回まで可能ですか？',
-          answer: 'プランによって2回〜5回まで修正可能です。追加修正も別途料金で対応いたします。',
+          answer:
+            'プランによって2回〜5回まで修正可能です。追加修正も別途料金で対応いたします。',
         },
         {
           question: '独自ドメインは含まれていますか？',
@@ -266,9 +277,11 @@ export const MODE_CONTENT: Record<Mode, ContentConfig> = {
   corporate: {
     meta: {
       title: 'AI制作で速く、安く、本気のコーポレートサイト | geneb',
-      description: '運用できるLP（計測/OGP/速度）とA/Bテスト前提のコーポレートサイトをAI制作で短納期・低コストで納品。',
+      description:
+        '運用できるLP（計測/OGP/速度）とA/Bテスト前提のコーポレートサイトをAI制作で短納期・低コストで納品。',
       ogTitle: 'AI制作で速く、安く、本気のコーポレートサイト',
-      ogDescription: '運用できるLP（計測/OGP/速度）とA/Bテスト前提のコーポレートサイトをAI制作で短納期・低コストで納品。',
+      ogDescription:
+        '運用できるLP（計測/OGP/速度）とA/Bテスト前提のコーポレートサイトをAI制作で短納期・低コストで納品。',
     },
     hero: {
       headline: 'AI制作で速く、安く、本気のコーポレートサイト',
@@ -415,19 +428,23 @@ export const MODE_CONTENT: Record<Mode, ContentConfig> = {
       items: [
         {
           question: 'A/Bテストはどのように実装されますか？',
-          answer: 'Google OptimizeやVWOなどのツールを使用して、継続的な改善が可能な設計で実装いたします。',
+          answer:
+            'Google OptimizeやVWOなどのツールを使用して、継続的な改善が可能な設計で実装いたします。',
         },
         {
           question: 'SEO対策はどの程度まで行いますか？',
-          answer: '技術的SEO、コンテンツSEO、ローカルSEOまで包括的に対応いたします。',
+          answer:
+            '技術的SEO、コンテンツSEO、ローカルSEOまで包括的に対応いたします。',
         },
         {
           question: '運用サポートは含まれていますか？',
-          answer: 'プランによって異なりますが、基本的な運用サポートは含まれています。詳細はお問い合わせください。',
+          answer:
+            'プランによって異なりますが、基本的な運用サポートは含まれています。詳細はお問い合わせください。',
         },
         {
           question: 'CMSはどのようなものを使用しますか？',
-          answer: 'WordPress、Strapi、Next.js CMSなど、ご要望に応じて最適なCMSをご提案いたします。',
+          answer:
+            'WordPress、Strapi、Next.js CMSなど、ご要望に応じて最適なCMSをご提案いたします。',
         },
       ],
     },
@@ -435,9 +452,11 @@ export const MODE_CONTENT: Record<Mode, ContentConfig> = {
   app: {
     meta: {
       title: 'AI制作で速く、安く、本気のアプリ | geneb',
-      description: 'MVP→拡張のロードマップで、権限/データ件数/連携を考慮したアプリをAI制作で短納期・低コストで納品。',
+      description:
+        'MVP→拡張のロードマップで、権限/データ件数/連携を考慮したアプリをAI制作で短納期・低コストで納品。',
       ogTitle: 'AI制作で速く、安く、本気のアプリ',
-      ogDescription: 'MVP→拡張のロードマップで、権限/データ件数/連携を考慮したアプリをAI制作で短納期・低コストで納品。',
+      ogDescription:
+        'MVP→拡張のロードマップで、権限/データ件数/連携を考慮したアプリをAI制作で短納期・低コストで納品。',
     },
     hero: {
       headline: 'AI制作で速く、安く、本気のアプリ',
@@ -589,23 +608,28 @@ export const MODE_CONTENT: Record<Mode, ContentConfig> = {
       items: [
         {
           question: 'MVPから本格的なアプリへの拡張は可能ですか？',
-          answer: 'はい、MVPの設計段階から拡張を考慮した設計を行います。段階的な機能追加が可能です。',
+          answer:
+            'はい、MVPの設計段階から拡張を考慮した設計を行います。段階的な機能追加が可能です。',
         },
         {
           question: '権限管理はどのように実装されますか？',
-          answer: 'RBAC（ロールベースアクセス制御）を採用し、ユーザーの役割に応じた権限管理を実装いたします。',
+          answer:
+            'RBAC（ロールベースアクセス制御）を採用し、ユーザーの役割に応じた権限管理を実装いたします。',
         },
         {
           question: 'データ件数の制限はありますか？',
-          answer: 'プランによって異なりますが、スケーラブルな設計で大量データにも対応可能です。',
+          answer:
+            'プランによって異なりますが、スケーラブルな設計で大量データにも対応可能です。',
         },
         {
           question: '外部サービスとの連携は可能ですか？',
-          answer: 'はい、API連携やWebhookなど、様々な外部サービスとの連携に対応いたします。',
+          answer:
+            'はい、API連携やWebhookなど、様々な外部サービスとの連携に対応いたします。',
         },
         {
           question: 'セキュリティ対策はどの程度行いますか？',
-          answer: 'OWASP Top 10を基準としたセキュリティ対策を実装し、必要に応じてセキュリティ監査も実施いたします。',
+          answer:
+            'OWASP Top 10を基準としたセキュリティ対策を実装し、必要に応じてセキュリティ監査も実施いたします。',
         },
       ],
     },
@@ -615,7 +639,9 @@ export const MODE_CONTENT: Record<Mode, ContentConfig> = {
 // Get current mode from environment variable
 export const getCurrentMode = (): Mode => {
   const mode = process.env.NEXT_PUBLIC_MODE as Mode;
-  return mode && ['portfolio', 'corporate', 'app'].includes(mode) ? mode : 'portfolio';
+  return mode && ['portfolio', 'corporate', 'app'].includes(mode)
+    ? mode
+    : 'portfolio';
 };
 
 export const getCurrentContent = (): ContentConfig => {

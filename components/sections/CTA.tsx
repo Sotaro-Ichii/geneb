@@ -15,7 +15,7 @@ export default function CTA() {
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full mix-blend-soft-light opacity-10 animate-pulse"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full mix-blend-soft-light opacity-5 animate-pulse delay-1000"></div>
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm">
           <CardContent className="p-12 text-center">
@@ -29,7 +29,7 @@ export default function CTA() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <Link href={SITE_CONFIG.contactUrl}>
-                <Button 
+                <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                   aria-label="無料相談の申し込みフォームへ移動"
@@ -47,8 +47,10 @@ export default function CTA() {
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">
                   お急ぎの方はこちらから直接お問い合わせ
                 </h3>
-                <div 
-                  dangerouslySetInnerHTML={{ __html: SITE_CONFIG.formEmbedCode }}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: SITE_CONFIG.formEmbedCode,
+                  }}
                   className="form-embed-container"
                 />
               </div>

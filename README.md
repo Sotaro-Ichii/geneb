@@ -45,23 +45,27 @@ NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-verification-code
 ## 開発環境のセットアップ
 
 1. リポジトリをクローン
+
 ```bash
 git clone <repository-url>
 cd geneb-landing-page
 ```
 
 2. 依存関係をインストール
+
 ```bash
 npm install
 ```
 
 3. 環境変数を設定
+
 ```bash
 cp .env.example .env.local
 # .env.localを編集して必要な環境変数を設定
 ```
 
 4. 開発サーバーを起動
+
 ```bash
 npm run dev
 ```
@@ -118,6 +122,7 @@ Vercelダッシュボードで以下の環境変数を設定：
 ### 開発環境での確認
 
 1. ローカルで開発サーバーを起動
+
 ```bash
 npm run dev
 ```

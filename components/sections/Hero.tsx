@@ -2,7 +2,13 @@
 
 import { Button } from '@/components/ui/button';
 import { Container, Section } from '@/components/ui/container';
-import { getCurrentMode, getCurrentContent, SITE_CONFIG, generateCTALink, generateAriaLabel } from '@/content/constants';
+import {
+  getCurrentMode,
+  getCurrentContent,
+  SITE_CONFIG,
+  generateCTALink,
+  generateAriaLabel,
+} from '@/content/constants';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -17,7 +23,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
       <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-      
+
       <Container className="relative z-10 text-center">
         {/* Logo */}
         <div className="mb-8">
@@ -34,7 +40,9 @@ export default function Hero() {
         {/* Brand badge */}
         <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full px-4 py-2 mb-8 shadow-sm">
           <Sparkles className="w-4 h-4 text-blue-600" />
-          <span className="text-sm font-medium text-slate-700">{SITE_CONFIG.brand}</span>
+          <span className="text-sm font-medium text-slate-700">
+            {SITE_CONFIG.brand}
+          </span>
         </div>
 
         {/* Main headline */}
@@ -57,8 +65,8 @@ export default function Hero() {
         {/* CTA Button */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href={generateCTALink(mode, 'hero')}>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               aria-label={generateAriaLabel(mode, '相談', 'hero')}
             >
@@ -66,10 +74,8 @@ export default function Hero() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
-          
-          <div className="text-sm text-slate-500">
-            無料相談・見積もりから
-          </div>
+
+          <div className="text-sm text-slate-500">無料相談・見積もりから</div>
         </div>
 
         {/* Trust indicators */}

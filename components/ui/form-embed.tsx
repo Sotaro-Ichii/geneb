@@ -11,11 +11,11 @@ interface FormEmbedProps {
   lazyLoad?: boolean;
 }
 
-export function FormEmbed({ 
-  className, 
+export function FormEmbed({
+  className,
   title = 'お問い合わせフォーム',
   height = 600,
-  lazyLoad = true 
+  lazyLoad = true,
 }: FormEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(!lazyLoad);
   const [isVisible, setIsVisible] = useState(false);
@@ -48,7 +48,7 @@ export function FormEmbed({
 
   if (!isLoaded) {
     return (
-      <div 
+      <div
         id="form-embed-container"
         className={`w-full bg-gray-50 rounded-lg flex items-center justify-center ${className}`}
         style={{ height: `${height}px` }}
@@ -75,7 +75,6 @@ export function FormEmbed({
           <div
             dangerouslySetInnerHTML={{ __html: SITE_CONFIG.formEmbedCode }}
             className="w-full h-full"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -88,7 +87,7 @@ export function FormEmbed({
           </div>
         )}
       </div>
-      
+
       {/* noscript fallback */}
       <noscript>
         <div className="mt-4 text-center">

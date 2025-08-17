@@ -1,4 +1,8 @@
-import { getCurrentMode, getCurrentContent, SITE_CONFIG } from '@/content/constants';
+import {
+  getCurrentMode,
+  getCurrentContent,
+  SITE_CONFIG,
+} from '@/content/constants';
 
 export function StructuredData() {
   const mode = getCurrentMode();
@@ -12,10 +16,7 @@ export function StructuredData() {
       url: process.env.NEXT_PUBLIC_SITE_URL || 'https://geneb.jp',
       logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://geneb.jp'}/logo.png`,
       description: SITE_CONFIG.primaryClaim,
-      sameAs: [
-        'https://twitter.com/geneb',
-        'https://github.com/geneb',
-      ],
+      sameAs: ['https://twitter.com/geneb', 'https://github.com/geneb'],
     };
 
     // Mode-specific structured data

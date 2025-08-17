@@ -1,11 +1,15 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { getCurrentMode, getCurrentContent, SITE_CONFIG } from '@/content/constants';
+import {
+  getCurrentMode,
+  getCurrentContent,
+  SITE_CONFIG,
+} from '@/content/constants';
 import { StructuredData } from '@/components/ui/structured-data';
 import { GAScript } from '@/components/ui/analytics';
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
 });
@@ -16,7 +20,14 @@ const content = getCurrentContent();
 export const metadata: Metadata = {
   title: content.meta.title,
   description: content.meta.description,
-  keywords: ['AI制作', 'ランディングページ', 'ポートフォリオ', 'コーポレートサイト', 'Webアプリ', 'geneb'],
+  keywords: [
+    'AI制作',
+    'ランディングページ',
+    'ポートフォリオ',
+    'コーポレートサイト',
+    'Webアプリ',
+    'geneb',
+  ],
   authors: [{ name: 'geneb' }],
   creator: 'geneb',
   publisher: 'geneb',
@@ -80,7 +91,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <StructuredData />
         <GAScript />
       </head>
