@@ -18,6 +18,7 @@ const mode = getCurrentMode();
 const content = getCurrentContent();
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://geneb.jp'),
   title: content.meta.title,
   description: content.meta.description,
   keywords: [
@@ -90,7 +91,10 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"

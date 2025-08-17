@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { FormEmbed } from '@/components/ui/form-embed';
 import { getCurrentContent, SITE_CONFIG } from '@/content/constants';
 import { ArrowRight, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
@@ -47,11 +48,11 @@ export default function CTA() {
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">
                   お急ぎの方はこちらから直接お問い合わせ
                 </h3>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: SITE_CONFIG.formEmbedCode,
-                  }}
+                <FormEmbed
                   className="form-embed-container"
+                  title="お問い合わせフォーム"
+                  height={400}
+                  lazyLoad={true}
                 />
               </div>
             )}
