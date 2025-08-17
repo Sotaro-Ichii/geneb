@@ -15,6 +15,14 @@ import {
   Cloud,
   Sparkles,
   ArrowUpRight,
+  MessageSquare,
+  CheckCircle,
+  Search,
+  Layout,
+  Rocket,
+  Shield,
+  Link,
+  FileText,
 } from 'lucide-react';
 
 const iconMap = {
@@ -30,6 +38,14 @@ const iconMap = {
   Cloud,
   Sparkles,
   ArrowUpRight,
+  MessageSquare,
+  CheckCircle,
+  Search,
+  Layout,
+  Rocket,
+  Shield,
+  Link,
+  FileText,
 } as const;
 
 export default function Features() {
@@ -56,7 +72,11 @@ export default function Features() {
               >
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <IconComponent className="w-8 h-8 text-blue-600" />
+                    {IconComponent ? (
+                      <IconComponent className="w-8 h-8 text-blue-600" />
+                    ) : (
+                      <Sparkles className="w-8 h-8 text-blue-600" />
+                    )}
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">
                     {feature.title}

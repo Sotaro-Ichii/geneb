@@ -17,6 +17,11 @@ import {
   Lightbulb,
   Plus,
   Network,
+  MessageSquare,
+  Zap,
+  Layout,
+  FileText,
+  Link,
 } from 'lucide-react';
 
 const iconMap = {
@@ -34,6 +39,11 @@ const iconMap = {
   Lightbulb,
   Plus,
   Network,
+  MessageSquare,
+  Zap,
+  Layout,
+  FileText,
+  Link,
 } as const;
 
 export default function Flow() {
@@ -56,7 +66,11 @@ export default function Flow() {
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200 -translate-y-1/2 z-0"></div>
 
           <div
-            className={`grid gap-8 ${content.flow.steps.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-3'} relative z-10`}
+            className={`grid gap-8 ${
+              content.flow.steps.length <= 3
+                ? 'md:grid-cols-3'
+                : 'md:grid-cols-2 lg:grid-cols-3'
+            } relative z-10`}
           >
             {content.flow.steps.map((step, index) => {
               const IconComponent = iconMap[step.icon as keyof typeof iconMap];
@@ -73,7 +87,11 @@ export default function Flow() {
                     </div>
 
                     <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
-                      <IconComponent className="w-8 h-8 text-blue-600" />
+                      {IconComponent ? (
+                        <IconComponent className="w-8 h-8 text-blue-600" />
+                      ) : (
+                        <MessageCircle className="w-8 h-8 text-blue-600" />
+                      )}
                     </div>
 
                     <h3 className="text-xl font-bold text-slate-900 mb-4">
