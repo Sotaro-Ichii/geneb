@@ -96,12 +96,12 @@ export default function Pricing() {
             {/* スマホ用の横スクロールコンテナ */}
             <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 sm:pb-6 scrollbar-hide snap-x snap-mandatory px-2">
               {pricing.production.map((plan) => (
-                <Card key={plan.id} className="flex-shrink-0 w-72 sm:w-80 relative border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-md border border-blue-200 snap-start group hover:scale-105">
+                <Card key={plan.id} className="flex-shrink-0 w-72 sm:w-80 relative border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-md border border-blue-200 snap-start group hover:scale-105 mt-4">
                   <Badge className="absolute -top-2 sm:-top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs border-0 shadow-lg">
                     <Zap className="w-3 h-3 mr-1" />
                     キャンペーン
                   </Badge>
-                  <CardHeader className="text-center pb-3 sm:pb-4 pt-6 sm:pt-4">
+                  <CardHeader className="text-center pb-3 sm:pb-4 pt-8 sm:pt-4">
                     <h4 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-rose-700 transition-colors duration-500">{plan.name}</h4>
                     <div className="mt-2 sm:mt-3 space-x-2">
                       <span className="text-slate-400 line-through text-xs sm:text-sm">¥{yen.format(plan.regularPrice)}</span>
@@ -190,14 +190,14 @@ export default function Pricing() {
             {/* スマホ用の横スクロールコンテナ */}
             <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 sm:pb-6 scrollbar-hide snap-x snap-mandatory px-2">
               {pricing.monthly.map((plan) => (
-                <Card key={plan.id} className="flex-shrink-0 w-72 sm:w-80 relative border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-md border border-blue-200 snap-start group hover:scale-105">
+                <Card key={plan.id} className="flex-shrink-0 w-72 sm:w-80 relative border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-md border border-blue-200 snap-start group hover:scale-105 mt-4">
                   {(plan.id === 'gold' || plan.id === 'platinum') && (
                     <Badge className="absolute -top-2 sm:-top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs border-0 shadow-lg">
                       <Star className="w-3 h-3 mr-1" />
                       人気
                     </Badge>
                   )}
-                  <CardHeader className="text-center pb-3 sm:pb-4 pt-6 sm:pt-4">
+                  <CardHeader className="text-center pb-3 sm:pb-4 pt-8 sm:pt-4">
                     <h4 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors duration-500">{plan.name}</h4>
                     <div className="mt-2 sm:mt-3">
                       <span className="text-2xl sm:text-3xl font-black text-blue-600">¥{yen.format(plan.priceMonthly)}</span>

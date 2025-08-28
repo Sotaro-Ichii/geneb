@@ -123,7 +123,7 @@ export default function WorksOrUseCases() {
             {content.worksOrUseCases.items.map((item, index) => (
               <Card
                 key={index}
-                className="flex-shrink-0 w-72 sm:w-80 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group snap-start hover:scale-105 bg-white/90 backdrop-blur-md border border-blue-200"
+                className="flex-shrink-0 w-72 sm:w-80 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group snap-start hover:scale-105 bg-white/90 backdrop-blur-md border border-blue-200 mt-4"
               >
                 {item.image && (
                   <div className="relative h-32 sm:h-40 overflow-hidden">

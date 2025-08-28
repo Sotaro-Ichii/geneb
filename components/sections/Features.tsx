@@ -104,7 +104,7 @@ export default function Features() {
               return (
                 <Card
                   key={index}
-                  className="flex-shrink-0 w-72 sm:w-80 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-md border border-blue-200 snap-start group hover:scale-105"
+                  className="flex-shrink-0 w-72 sm:w-80 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-md border border-blue-200 snap-start group hover:scale-105 mt-4"
                 >
                   <CardContent className="p-6 sm:p-8 text-center relative overflow-hidden">
                     {/* Icon container with enhanced styling */}
