@@ -61,7 +61,59 @@ export default function Flow() {
           </p>
         </div>
 
-        <div className="relative">
+        {/* スマホ用：横スクロール */}
+        <div className="md:hidden">
+          {/* スクロールインジケーター */}
+          <div className="flex justify-center mb-4">
+            <div className="flex space-x-1">
+              {content.flow.steps.map((_, index) => (
+                <div 
+                  key={index} 
+                  className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-blue-300'}`}
+                ></div>
+              ))}
+            </div>
+          </div>
+          
+          {/* スマホ用の横スクロールコンテナ */}
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+            {content.flow.steps.map((step, index) => {
+              const IconComponent = iconMap[step.icon as keyof typeof iconMap];
+
+              return (
+                <Card
+                  key={index}
+                  className="flex-shrink-0 w-80 border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white snap-start"
+                >
+                  <CardContent className="p-6 text-center relative">
+                    {/* Step number */}
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xs">
+                      {index + 1}
+                    </div>
+
+                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 mt-2">
+                      {IconComponent ? (
+                        <IconComponent className="w-6 h-6 text-blue-600" />
+                      ) : (
+                        <MessageCircle className="w-6 h-6 text-blue-600" />
+                      )}
+                    </div>
+
+                    <h3 className="text-lg font-bold text-slate-900 mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* デスクトップ用のグリッドレイアウト */}
+        <div className="hidden md:block relative">
           {/* Connection line for desktop */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200 -translate-y-1/2 z-0"></div>
 
