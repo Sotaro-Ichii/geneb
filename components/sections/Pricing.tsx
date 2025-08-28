@@ -53,7 +53,58 @@ export default function Pricing() {
         {/* 1) 制作プラン（買い切り） */}
         <div className="mb-6">
           <h3 className="text-2xl font-bold text-slate-900 mb-4">制作プラン（買い切り）</h3>
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+          
+          {/* スマホ用：横スクロール */}
+          <div className="md:hidden">
+            {/* スクロールインジケーター */}
+            <div className="flex justify-center mb-4">
+              <div className="flex space-x-1">
+                {pricing.production.map((_, index) => (
+                  <div 
+                    key={index} 
+                    className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-rose-600' : 'bg-rose-300'}`}
+                  ></div>
+                ))}
+              </div>
+            </div>
+            
+            {/* スマホ用の横スクロールコンテナ */}
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+              {pricing.production.map((plan) => (
+                <Card key={plan.id} className="flex-shrink-0 w-80 relative border-slate-200 h-full flex flex-col snap-start">
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-xs">
+                    キャンペーン
+                  </Badge>
+                  <CardHeader className="text-center pb-2">
+                    <h4 className="text-lg font-bold text-slate-900">{plan.name}</h4>
+                    <div className="mt-2 space-x-2">
+                      <span className="text-slate-400 line-through text-sm">¥{yen.format(plan.regularPrice)}</span>
+                      <span className="text-2xl font-extrabold text-slate-900">¥{yen.format(plan.campaignPrice)}</span>
+                    </div>
+                    <p className="text-xs text-slate-600 mt-1">{plan.target}</p>
+                  </CardHeader>
+                  <CardContent className="pt-4 flex flex-col grow">
+                    <ul className="space-y-2 mb-4">
+                      {plan.features.map((f, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Check className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-xs text-slate-700">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.campaignPrice} className="mt-auto block">
+                      <Button className="w-full text-sm" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
+                        このプランで相談する
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* デスクトップ用のグリッドレイアウト */}
+          <div className="hidden md:grid md:grid-cols-3 gap-8 items-stretch">
             {pricing.production.map((plan) => (
               <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
                 <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white">
@@ -90,7 +141,66 @@ export default function Pricing() {
         {/* 2) 月額プラン（維持・更新） */}
         <div className="mt-16 mb-6">
           <h3 className="text-2xl font-bold text-slate-900 mb-4">月額プラン（維持・更新）</h3>
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+          
+          {/* スマホ用：横スクロール */}
+          <div className="md:hidden">
+            {/* スクロールインジケーター */}
+            <div className="flex justify-center mb-4">
+              <div className="flex space-x-1">
+                {pricing.monthly.map((_, index) => (
+                  <div 
+                    key={index} 
+                    className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-blue-300'}`}
+                  ></div>
+                ))}
+              </div>
+            </div>
+            
+            {/* スマホ用の横スクロールコンテナ */}
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+              {pricing.monthly.map((plan) => (
+                <Card key={plan.id} className="flex-shrink-0 w-80 relative border-slate-200 h-full flex flex-col snap-start">
+                  {(plan.id === 'gold' || plan.id === 'platinum') && (
+                    <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs">
+                      <Star className="w-3 h-3 mr-1" />人気
+                    </Badge>
+                  )}
+                  <CardHeader className="text-center pb-2">
+                    <h4 className="text-lg font-bold text-slate-900">{plan.name}</h4>
+                    <div className="mt-2">
+                      <span className="text-2xl font-extrabold text-slate-900">¥{yen.format(plan.priceMonthly)}</span>
+                      <span className="text-slate-500 ml-1 text-sm">/月</span>
+                    </div>
+                    {plan.target && (
+                      <p className="text-xs text-slate-600 mt-1">{plan.target}</p>
+                    )}
+                  </CardHeader>
+                  <CardContent className="pt-4 flex flex-col grow">
+                    <ul className="space-y-2 mb-4">
+                      {plan.includes.map((inc, i) => {
+                        const highlightGold = plan.id === 'gold' && inc.includes('アクセス解析レポート');
+                        const highlightPlat = plan.id === 'platinum' && (inc.includes('ブログ化') || inc.includes('転用'));
+                        return (
+                          <li key={i} className={`flex items-start gap-2 ${highlightGold || highlightPlat ? 'bg-yellow-50 rounded px-2 py-1' : ''}`}>
+                            <Check className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
+                            <span className="text-xs text-slate-700">{inc}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.priceMonthly} className="mt-auto block">
+                      <Button className="w-full text-sm" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
+                        この月額で相談する
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* デスクトップ用のグリッドレイアウト */}
+          <div className="hidden md:grid md:grid-cols-3 gap-8 items-stretch">
             {pricing.monthly.map((plan) => (
               <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
                 {(plan.id === 'gold' || plan.id === 'platinum') && (

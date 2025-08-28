@@ -72,7 +72,59 @@ export default function WorksOrUseCases() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* スマホ用：横スクロール、デスクトップ用：グリッド */}
+        <div className="md:hidden">
+          {/* スクロールインジケーター */}
+          <div className="flex justify-center mb-4">
+            <div className="flex space-x-1">
+              {content.worksOrUseCases.items.map((_, index) => (
+                <div 
+                  key={index} 
+                  className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-blue-300'}`}
+                ></div>
+              ))}
+            </div>
+          </div>
+          
+          {/* スマホ用の横スクロールコンテナ */}
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+            {content.worksOrUseCases.items.map((item, index) => (
+              <Card
+                key={index}
+                className="flex-shrink-0 w-80 border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group snap-start"
+              >
+                {item.image && (
+                  <div className="relative h-40 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={`${item.title}のサンプル画像`}
+                      width={400}
+                      height={192}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    {item.category && (
+                      <Badge className="absolute top-3 left-3 bg-blue-600 text-white text-xs">
+                        {item.category}
+                      </Badge>
+                    )}
+                  </div>
+                )}
+                <CardContent className="p-4">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* デスクトップ用のグリッドレイアウト */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
           {content.worksOrUseCases.items.map((item, index) => (
             <Card
               key={index}
