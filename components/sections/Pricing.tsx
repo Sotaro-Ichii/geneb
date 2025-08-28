@@ -6,125 +6,176 @@ import { Badge } from '@/components/ui/badge';
 import { Container, Section } from '@/components/ui/container';
 import {
   getCurrentMode,
-  getCurrentContent,
   SITE_CONFIG,
   generateCTALink,
   generateAriaLabel,
+  pricing,
 } from '@/content/constants';
-import { Check, Star, Clock, RefreshCw } from 'lucide-react';
+import { Check, Star } from 'lucide-react';
 import Link from 'next/link';
+import { trackEvent } from '@/components/ui/analytics';
+
+const yen = new Intl.NumberFormat('ja-JP');
 
 export default function Pricing() {
   const mode = getCurrentMode();
-  const content = getCurrentContent();
+  // annual perk view once
+  if (typeof window !== 'undefined') {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            trackEvent('annual_perk_view', 'engagement', 'annual_perk');
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    queueMicrotask(() => {
+      const el = document.getElementById('annual-perk');
+      if (el) observer.observe(el);
+    });
+  }
 
   return (
     <Section className="bg-white" id="pricing">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            {content.pricing.title}
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
+            料金プラン
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-6">
-            {content.pricing.subtitle}
-          </p>
-          <p className="text-sm text-slate-500">
-            {SITE_CONFIG.pricingNotes.taxNote}
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            制作プラン × 月額プラン × オプション × 通年契約特典で最適提案
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {content.pricing.plans.map((plan, index) => (
-            <Card
-              key={index}
-              className={`relative border-2 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${
-                plan.highlighted
-                  ? 'border-blue-500 shadow-xl scale-105 bg-gradient-to-br from-blue-50 to-white'
-                  : 'border-slate-200 hover:border-blue-300 bg-white'
-              }`}
-            >
-              {plan.highlighted && (
-                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1">
-                  <Star className="w-3 h-3 mr-1" />
-                  人気プラン
+        {/* 1) 制作プラン（買い切り） */}
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">制作プラン（買い切り）</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {pricing.production.map((plan) => (
+              <Card key={plan.id} className="relative border-slate-200">
+                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white">
+                  キャンペーン
                 </Badge>
-              )}
+                <CardHeader className="text-center pb-2">
+                  <h4 className="text-xl font-bold text-slate-900">{plan.name}</h4>
+                  <div className="mt-2 space-x-2">
+                    <span className="text-slate-400 line-through">¥{yen.format(plan.regularPrice)}</span>
+                    <span className="text-3xl font-extrabold text-slate-900">¥{yen.format(plan.campaignPrice)}</span>
+                  </div>
+                  <p className="text-sm text-slate-600 mt-1">{plan.target}</p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6">
+                    {plan.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-green-500 mt-0.5" />
+                        <span className="text-sm text-slate-700">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.campaignPrice}>
+                    <Button className="w-full" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
+                      このプランで相談する
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
 
-              <CardHeader className="text-center pb-4">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">
-                  {plan.name}
-                </h3>
-                <div className="mb-4">
-                  <span className="text-4xl font-bold text-slate-900">
-                    ¥{plan.price}
-                  </span>
-                  {plan.period && (
-                    <span className="text-lg text-slate-500 ml-1">
-                      {plan.period}
-                    </span>
+        {/* 2) 月額プラン（維持・更新） */}
+        <div className="mt-16 mb-6">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">月額プラン（維持・更新）</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {pricing.monthly.map((plan) => (
+              <Card key={plan.id} className="relative border-slate-200">
+                {(plan.id === 'gold' || plan.id === 'platinum') && (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white">
+                    <Star className="w-3 h-3 mr-1" />人気
+                  </Badge>
+                )}
+                <CardHeader className="text-center pb-2">
+                  <h4 className="text-xl font-bold text-slate-900">{plan.name}</h4>
+                  <div className="mt-2">
+                    <span className="text-3xl font-extrabold text-slate-900">¥{yen.format(plan.priceMonthly)}</span>
+                    <span className="text-slate-500 ml-1 text-sm">/月</span>
+                  </div>
+                  {plan.target && (
+                    <p className="text-sm text-slate-600 mt-1">{plan.target}</p>
                   )}
-                </div>
-                <p className="text-slate-600">{plan.description}</p>
-              </CardHeader>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6">
+                    {plan.includes.map((inc, i) => {
+                      const highlightGold = plan.id === 'gold' && inc.includes('アクセス解析レポート');
+                      const highlightPlat = plan.id === 'platinum' && (inc.includes('ブログ化') || inc.includes('転用'));
+                      return (
+                        <li key={i} className={`flex items-start gap-2 ${highlightGold || highlightPlat ? 'bg-yellow-50 rounded px-2 py-1' : ''}`}>
+                          <Check className="w-4 h-4 text-green-500 mt-0.5" />
+                          <span className="text-sm text-slate-700">{inc}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.priceMonthly}>
+                    <Button className="w-full" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
+                      この月額で相談する
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
 
-              <CardContent className="pt-4">
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700 text-sm leading-relaxed">
-                        {feature}
-                      </span>
+        {/* 3) オプション & 通年契約特典 */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">オプション & 通年契約特典</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="border-slate-200">
+              <CardHeader>
+                <h4 className="text-xl font-semibold text-slate-900">オプション</h4>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 mb-6">
+                  {pricing.options.map((opt, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-500 mt-0.5" />
+                      <span className="text-sm text-slate-700">{opt}</span>
                     </li>
                   ))}
                 </ul>
-
-                {/* Plan details */}
-                <div className="mb-8 space-y-2 text-sm text-slate-600">
-                  {plan.revisions && (
-                    <div className="flex items-center gap-2">
-                      <RefreshCw className="w-4 h-4" />
-                      <span>
-                        {SITE_CONFIG.pricingNotes.revisions}: {plan.revisions}回
-                      </span>
-                    </div>
-                  )}
-                  {plan.deliveryDays && (
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" />
-                      <span>
-                        {SITE_CONFIG.pricingNotes.deliveryDays}:{' '}
-                        {plan.deliveryDays}日
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                <Link href={generateCTALink(mode, 'pricing')}>
-                  <Button
-                    className={`w-full py-3 font-semibold rounded-xl transition-all duration-300 ${
-                      plan.highlighted
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl'
-                        : 'bg-slate-100 hover:bg-slate-200 text-slate-900 hover:text-blue-600'
-                    }`}
-                    aria-label={generateAriaLabel(
-                      mode,
-                      `${plan.name}プランで相談`,
-                      'pricing'
-                    )}
-                  >
-                    このプランで相談する
+                <Link href={SITE_CONFIG.contactUrl} data-plan-id="options" data-plan-name="オプション" data-price="-">
+                  <Button variant="secondary" className="w-full" aria-label="オプションについて相談する" onClick={() => trackEvent('cta_options_click','engagement','options')}>
+                    オプションについて相談する
                   </Button>
                 </Link>
               </CardContent>
             </Card>
-          ))}
-        </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-sm text-slate-500 max-w-3xl mx-auto leading-relaxed">
-            {SITE_CONFIG.commonNote}
-          </p>
+            <Card className="border-slate-200" id="annual-perk">
+              <CardHeader>
+                <h4 className="text-xl font-semibold text-slate-900">{pricing.annualContractPerk.title}</h4>
+                <Badge className="w-fit bg-emerald-600 text-white">3ヶ月無料</Badge>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 mb-4">
+                  {pricing.annualContractPerk.items.map((it, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-green-500 mt-0.5" />
+                      <span className="text-sm text-slate-700">{it}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-xs text-slate-500">{pricing.annualContractPerk.note}</p>
+              </CardContent>
+            </Card>
+          </div>
+          <p className="text-xs text-slate-500 mt-6">{SITE_CONFIG.taxNote || pricing.taxNote}</p>
         </div>
       </Container>
     </Section>

@@ -78,6 +78,16 @@ export default function Hero() {
           <div className="text-sm text-slate-500">無料相談・見積もりから</div>
         </div>
 
+        {/* 最安例バナー */}
+        <div className="mt-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm">
+            <span className="font-semibold">最安例</span>
+            <span>
+              ライト（¥3,000）＋シルバー（¥499/月）＝ <strong>月額499円で公開維持</strong>。まずは相談を。
+            </span>
+          </div>
+        </div>
+
         {/* Trust indicators */}
         <div className="mt-16 text-center">
           <p className="text-sm text-slate-400 mb-4">安心の実績</p>

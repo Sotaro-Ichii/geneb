@@ -1,3 +1,26 @@
+# geneb
+
+## 価格データの編集
+- `content/constants.ts` の `pricing` を編集します。
+- `taxNote` は `.env` の `NEXT_PUBLIC_TAX_NOTE` を設定可能。
+
+## 計測のセットアップ
+- GA4: `.env` に `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXX`
+- Plausible: `.env` に `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=example.com`
+  - どちらかが存在すれば自動で有効化。
+
+## OGP 生成
+- `app/og/route.ts` は暫定でJSON応答。Nextの `next/og` 対応後に画像生成へ切替。
+
+## 構造化データ
+- `app/page.tsx` の `<JsonLd />` が `Product`/`Service` を出力。
+- `priceValidUntil` は現在から+6ヶ月（暫定）。必要に応じて更新してください。
+
+## 通年契約特典の文言
+- `content/constants.ts` の `annualContractPerk` を更新してください。
+
+## 免責・スコープ注記
+- フッター（`components/sections/Footer.tsx`）に明記しています。必要に応じて修正。
 # geneb Landing Page
 
 AI制作で速く、安く、本気のLPを提供するgenebのランディングページです。

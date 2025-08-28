@@ -7,7 +7,7 @@ import {
   SITE_CONFIG,
 } from '@/content/constants';
 import { StructuredData } from '@/components/ui/structured-data';
-import { GAScript } from '@/components/ui/analytics';
+import { GAScript, PlausibleScript } from '@/components/ui/analytics';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -101,7 +101,9 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <StructuredData />
+        {/* Analytics: GA4 or Plausible (存在すれば読み込み) */}
         <GAScript />
+        <PlausibleScript />
       </head>
       <body className={inter.className}>{children}</body>
     </html>

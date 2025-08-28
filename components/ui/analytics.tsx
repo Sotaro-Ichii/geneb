@@ -58,6 +58,18 @@ export function GAScript() {
   );
 }
 
+export function PlausibleScript() {
+  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  if (!domain) return null;
+  return (
+    <script
+      defer
+      data-domain={domain}
+      src="https://plausible.io/js/script.js"
+    />
+  );
+}
+
 // Utility functions for tracking events
 export const trackEvent = (
   action: string,
@@ -71,6 +83,12 @@ export const trackEvent = (
       event_label: label,
       value: value,
     });
+  }
+  // Plausible fallback
+  if (typeof window !== 'undefined' && (window as any).plausible) {
+    try {
+      (window as any).plausible(action, { props: { category, label, value } });
+    } catch (_) {}
   }
 };
 

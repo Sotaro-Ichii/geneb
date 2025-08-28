@@ -15,6 +15,7 @@ jest.mock('@/content/constants', () => ({
     brand: 'geneb',
     primaryClaim: 'テスト用プライマリクレーム',
     contactUrl: 'https://test.com',
+    taxNote: '※価格は税込です',
   },
   generateCTALink: () => 'https://test.com',
   generateAriaLabel: () => 'テスト用ラベル',

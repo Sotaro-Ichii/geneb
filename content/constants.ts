@@ -647,3 +647,100 @@ export const getCurrentMode = (): Mode => {
 export const getCurrentContent = (): ContentConfig => {
   return MODE_CONTENT[getCurrentMode()];
 };
+
+// Pricing model for LP (制作プラン/月額プラン/オプション/通年契約特典)
+export const pricing = {
+  production: [
+    {
+      id: 'light',
+      name: 'ライト（学生向け）',
+      regularPrice: 5000,
+      campaignPrice: 3000,
+      features: [
+        '1〜2ページ（自己紹介・プロジェクトリスト）',
+        'テンプレートベース',
+        'スマホ対応',
+        '完成後の修正2回まで',
+      ],
+      target: '学生・ポートフォリオ用途',
+      note: 'キャンペーン適用中',
+    },
+    {
+      id: 'middle',
+      name: 'ミドル（個人事業主向け）',
+      regularPrice: 50000,
+      campaignPrice: 29800,
+      features: [
+        '3〜5ページ（TOP/サービス紹介/問い合わせ）',
+        'デザインカスタマイズあり',
+        '問い合わせフォーム設置',
+        '完成後修正3回まで',
+      ],
+      target: '個人事業主・フリーランス',
+      note: 'キャンペーン適用中',
+    },
+    {
+      id: 'premium',
+      name: 'プレミアム（学生起業家・小規模スタートアップ向け）',
+      regularPrice: 100000,
+      campaignPrice: 70000,
+      features: [
+        '5〜10ページ（TOP/サービス詳細/採用ページなど）',
+        '完全オリジナルデザイン',
+        '問い合わせ＋簡易CMS導入',
+        '基本的なSEO設定',
+        '完成後修正5回まで',
+      ],
+      target: '学生起業家・小規模スタートアップ・NPO',
+      note: 'キャンペーン適用中',
+    },
+  ],
+  monthly: [
+    {
+      id: 'silver',
+      name: 'シルバー',
+      priceMonthly: 499,
+      includes: [
+        'サーバー保守、SSL維持、トラブル対応',
+        '更新代行なし（オプション利用可）',
+      ],
+      options: ['追加更新：999円/回', 'まとめ更新（3箇所まで）：700円/回'],
+      target: 'ポートフォリオ利用者・コスト最小層',
+    },
+    {
+      id: 'gold',
+      name: 'ゴールド',
+      priceMonthly: 1200,
+      includes: [
+        'サーバー保守、SSL維持、トラブル対応',
+        '月1回までの更新代行',
+        'アクセス解析レポート（月1回）',
+      ],
+      target: '毎月更新が必要な個人事業主',
+    },
+    {
+      id: 'platinum',
+      name: 'プラチナ',
+      priceMonthly: 3000,
+      includes: [
+        'サーバー保守、SSL維持、トラブル対応',
+        '月3回までの更新代行',
+        'ブログ化・記事投稿サポート',
+        '個人事業サイトへの転用・拡張の相談込み',
+      ],
+      target: 'フリーランス志望者・学生起業家・小規模スタートアップ',
+    },
+  ],
+  options: [
+    '追加更新：999円/回',
+    'まとめ更新（3箇所まで）：700円/回',
+    'WordPress導入：＋30,000円',
+    '簡易CMS導入＋Notion連携：＋20,000円',
+  ],
+  annualContractPerk: {
+    title: '通年契約特典',
+    items: ['最初の3ヶ月、月額費用が無料', '追加更新料 1回無料'],
+    note: '※シルバー/ゴールド/プラチナ いずれかの通年契約が対象',
+  },
+  taxNote: process.env.NEXT_PUBLIC_TAX_NOTE || '※表示価格は税込です',
+};
