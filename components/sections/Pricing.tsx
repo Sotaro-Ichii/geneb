@@ -76,8 +76,8 @@ export default function Pricing() {
                       </li>
                     ))}
                   </ul>
-                  <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.campaignPrice}>
-                    <Button className="w-full mt-auto" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
+                  <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.campaignPrice} className="mt-auto block">
+                    <Button className="w-full" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
                       このプランで相談する
                     </Button>
                   </Link>
@@ -121,8 +121,8 @@ export default function Pricing() {
                       );
                     })}
                   </ul>
-                  <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.priceMonthly}>
-                    <Button className="w-full mt-auto" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
+                  <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.priceMonthly} className="mt-auto block">
+                    <Button className="w-full" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
                       この月額で相談する
                     </Button>
                   </Link>
