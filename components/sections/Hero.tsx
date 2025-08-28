@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import TextType from '@/components/ui/text-type';
+import Prism from '@/components/ui/prism';
 import {
   getCurrentMode,
   getCurrentContent,
@@ -26,20 +27,21 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden py-16 sm:py-20 lg:py-24">
-      {/* Enhanced background decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
-      
-      {/* Floating elements */}
-      <div className="absolute top-20 left-10 animate-float">
-        <div className="w-4 h-4 bg-blue-400 rounded-full opacity-40"></div>
-      </div>
-      <div className="absolute top-48 right-20 animate-float-delay">
-        <div className="w-3 h-3 bg-purple-400 rounded-full opacity-40"></div>
-      </div>
-      <div className="absolute bottom-32 left-1/3 animate-float">
-        <div className="w-2 h-2 bg-emerald-400 rounded-full opacity-40"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-24">
+      {/* Prism background */}
+      <div className="absolute inset-0">
+        <Prism
+          animationType="rotate"
+          timeScale={0.5}
+          height={3.5}
+          baseWidth={5.5}
+          scale={3.6}
+          hueShift={0}
+          colorFrequency={1}
+          noise={0.5}
+          glow={1}
+          transparent={true}
+        />
       </div>
 
       <Container className="relative z-10 text-center">
