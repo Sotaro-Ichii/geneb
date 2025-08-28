@@ -11,7 +11,7 @@ import {
   generateAriaLabel,
   pricing,
 } from '@/content/constants';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, Sparkles, Zap, Crown } from 'lucide-react';
 import Link from 'next/link';
 import { trackEvent } from '@/components/ui/analytics';
 
@@ -39,61 +39,87 @@ export default function Pricing() {
   }
 
   return (
-    <Section className="bg-white" id="pricing">
-      <Container>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
-            料金プラン
+    <Section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden" id="pricing">
+      {/* Background decorations */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+      
+      {/* Floating elements */}
+      <div className="absolute top-20 left-10 animate-float">
+        <div className="w-2 h-2 bg-blue-400 rounded-full opacity-60"></div>
+      </div>
+      <div className="absolute top-40 right-20 animate-float-delay">
+        <div className="w-3 h-3 bg-purple-400 rounded-full opacity-60"></div>
+      </div>
+      <div className="absolute bottom-20 left-1/3 animate-float">
+        <div className="w-1 h-1 bg-emerald-400 rounded-full opacity-60"></div>
+      </div>
+
+      <Container className="relative z-10">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-8">
+            <Sparkles className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-medium text-white">料金プラン</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent animate-gradient">
+              料金プラン
+            </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto font-medium">
             制作プラン × 月額プラン × オプション × 通年契約特典で最適提案
           </p>
         </div>
 
         {/* 1) 制作プラン（買い切り） */}
-        <div className="mb-6">
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">制作プラン（買い切り）</h3>
+        <div className="mb-16">
+          <h3 className="text-3xl font-black text-white mb-8 text-center">
+            <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">
+              制作プラン（買い切り）
+            </span>
+          </h3>
           
           {/* スマホ用：横スクロール */}
           <div className="md:hidden">
             {/* スクロールインジケーター */}
-            <div className="flex justify-center mb-4">
-              <div className="flex space-x-1">
+            <div className="flex justify-center mb-6">
+              <div className="flex space-x-2">
                 {pricing.production.map((_, index) => (
                   <div 
                     key={index} 
-                    className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-rose-600' : 'bg-rose-300'}`}
+                    className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-rose-500' : 'bg-rose-300'}`}
                   ></div>
                 ))}
               </div>
             </div>
             
             {/* スマホ用の横スクロールコンテナ */}
-            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+            <div className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory">
               {pricing.production.map((plan) => (
-                <Card key={plan.id} className="flex-shrink-0 w-80 relative border-slate-200 h-full flex flex-col snap-start">
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-xs">
+                <Card key={plan.id} className="flex-shrink-0 w-80 relative border-0 shadow-2xl hover:shadow-rose-500/25 transition-all duration-500 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 snap-start group hover:scale-105">
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs border-0 shadow-lg">
+                    <Zap className="w-3 h-3 mr-1" />
                     キャンペーン
                   </Badge>
-                  <CardHeader className="text-center pb-2">
-                    <h4 className="text-lg font-bold text-slate-900">{plan.name}</h4>
-                    <div className="mt-2 space-x-2">
+                  <CardHeader className="text-center pb-4">
+                    <h4 className="text-xl font-bold text-white group-hover:text-rose-300 transition-colors duration-500">{plan.name}</h4>
+                    <div className="mt-3 space-x-2">
                       <span className="text-slate-400 line-through text-sm">¥{yen.format(plan.regularPrice)}</span>
-                      <span className="text-2xl font-extrabold text-slate-900">¥{yen.format(plan.campaignPrice)}</span>
+                      <span className="text-3xl font-black text-rose-400">¥{yen.format(plan.campaignPrice)}</span>
                     </div>
-                    <p className="text-xs text-slate-600 mt-1">{plan.target}</p>
+                    <p className="text-xs text-slate-300 mt-2">{plan.target}</p>
                   </CardHeader>
                   <CardContent className="pt-4 flex flex-col grow">
-                    <ul className="space-y-2 mb-4">
+                    <ul className="space-y-3 mb-6">
                       {plan.features.map((f, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Check className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-xs text-slate-700">{f}</span>
+                        <li key={i} className="flex items-start gap-3">
+                          <Check className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-slate-300">{f}</span>
                         </li>
                       ))}
                     </ul>
                     <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.campaignPrice} className="mt-auto block">
-                      <Button className="w-full text-sm" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
+                      <Button className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-lg hover:shadow-rose-500/25 transition-all duration-500 hover:scale-105" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
                         このプランで相談する
                       </Button>
                     </Link>
@@ -106,29 +132,30 @@ export default function Pricing() {
           {/* デスクトップ用のグリッドレイアウト */}
           <div className="hidden md:grid md:grid-cols-3 gap-8 items-stretch">
             {pricing.production.map((plan) => (
-              <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white">
+              <Card key={plan.id} className="relative border-0 shadow-2xl hover:shadow-rose-500/25 transition-all duration-500 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 group hover:-translate-y-2">
+                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-500 to-pink-500 text-white border-0 shadow-lg">
+                  <Zap className="w-4 h-4 mr-1" />
                   キャンペーン
                 </Badge>
-                <CardHeader className="text-center pb-2">
-                  <h4 className="text-xl font-bold text-slate-900">{plan.name}</h4>
-                  <div className="mt-2 space-x-2">
+                <CardHeader className="text-center pb-4">
+                  <h4 className="text-2xl font-bold text-white group-hover:text-rose-300 transition-colors duration-500">{plan.name}</h4>
+                  <div className="mt-3 space-x-2">
                     <span className="text-slate-400 line-through">¥{yen.format(plan.regularPrice)}</span>
-                    <span className="text-3xl font-extrabold text-slate-900">¥{yen.format(plan.campaignPrice)}</span>
+                    <span className="text-4xl font-black text-rose-400">¥{yen.format(plan.campaignPrice)}</span>
                   </div>
-                  <p className="text-sm text-slate-600 mt-1">{plan.target}</p>
+                  <p className="text-sm text-slate-300 mt-2">{plan.target}</p>
                 </CardHeader>
                 <CardContent className="pt-4 flex flex-col grow">
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-3 mb-8">
                     {plan.features.map((f, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-green-500 mt-0.5" />
-                        <span className="text-sm text-slate-700">{f}</span>
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-slate-300">{f}</span>
                       </li>
                     ))}
                   </ul>
                   <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.campaignPrice} className="mt-auto block">
-                    <Button className="w-full" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
+                    <Button className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-lg hover:shadow-rose-500/25 transition-all duration-500 hover:scale-105" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
                       このプランで相談する
                     </Button>
                   </Link>
@@ -139,57 +166,62 @@ export default function Pricing() {
         </div>
 
         {/* 2) 月額プラン（維持・更新） */}
-        <div className="mt-16 mb-6">
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">月額プラン（維持・更新）</h3>
+        <div className="mt-20 mb-16">
+          <h3 className="text-3xl font-black text-white mb-8 text-center">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              月額プラン（維持・更新）
+            </span>
+          </h3>
           
           {/* スマホ用：横スクロール */}
           <div className="md:hidden">
             {/* スクロールインジケーター */}
-            <div className="flex justify-center mb-4">
-              <div className="flex space-x-1">
+            <div className="flex justify-center mb-6">
+              <div className="flex space-x-2">
                 {pricing.monthly.map((_, index) => (
                   <div 
                     key={index} 
-                    className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-blue-300'}`}
+                    className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-blue-500' : 'bg-blue-300'}`}
                   ></div>
                 ))}
               </div>
             </div>
             
             {/* スマホ用の横スクロールコンテナ */}
-            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+            <div className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory">
               {pricing.monthly.map((plan) => (
-                <Card key={plan.id} className="flex-shrink-0 w-80 relative border-slate-200 h-full flex flex-col snap-start">
+                <Card key={plan.id} className="flex-shrink-0 w-80 relative border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 snap-start group hover:scale-105">
                   {(plan.id === 'gold' || plan.id === 'platinum') && (
-                    <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs">
-                      <Star className="w-3 h-3 mr-1" />人気
+                    <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs border-0 shadow-lg">
+                      <Star className="w-3 h-3 mr-1" />
+                      人気
                     </Badge>
                   )}
-                  <CardHeader className="text-center pb-2">
-                    <h4 className="text-lg font-bold text-slate-900">{plan.name}</h4>
-                    <div className="mt-2">
-                      <span className="text-2xl font-extrabold text-slate-900">¥{yen.format(plan.priceMonthly)}</span>
-                      <span className="text-slate-500 ml-1 text-sm">/月</span>
+                  <CardHeader className="text-center pb-4">
+                    <h4 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors duration-500">{plan.name}</h4>
+                    <div className="mt-3">
+                      <span className="text-3xl font-black text-blue-400">¥{yen.format(plan.priceMonthly)}</span>
+                      <span className="text-slate-400 ml-1 text-sm">/月</span>
                     </div>
                     {plan.target && (
-                      <p className="text-xs text-slate-600 mt-1">{plan.target}</p>
+                      <p className="text-xs text-slate-300 mt-2">{plan.target}</p>
                     )}
                   </CardHeader>
                   <CardContent className="pt-4 flex flex-col grow">
-                    <ul className="space-y-2 mb-4">
+                    <ul className="space-y-3 mb-6">
                       {plan.includes.map((inc, i) => {
                         const highlightGold = plan.id === 'gold' && inc.includes('アクセス解析レポート');
                         const highlightPlat = plan.id === 'platinum' && (inc.includes('ブログ化') || inc.includes('転用'));
                         return (
-                          <li key={i} className={`flex items-start gap-2 ${highlightGold || highlightPlat ? 'bg-yellow-50 rounded px-2 py-1' : ''}`}>
-                            <Check className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
-                            <span className="text-xs text-slate-700">{inc}</span>
+                          <li key={i} className={`flex items-start gap-3 ${highlightGold || highlightPlat ? 'bg-yellow-500/20 rounded-lg px-3 py-2' : ''}`}>
+                            <Check className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-slate-300">{inc}</span>
                           </li>
                         );
                       })}
                     </ul>
                     <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.priceMonthly} className="mt-auto block">
-                      <Button className="w-full text-sm" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
+                      <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-500 hover:scale-105" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
                         この月額で相談する
                       </Button>
                     </Link>
@@ -202,37 +234,38 @@ export default function Pricing() {
           {/* デスクトップ用のグリッドレイアウト */}
           <div className="hidden md:grid md:grid-cols-3 gap-8 items-stretch">
             {pricing.monthly.map((plan) => (
-              <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
+              <Card key={plan.id} className="relative border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 group hover:-translate-y-2">
                 {(plan.id === 'gold' || plan.id === 'platinum') && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white">
-                    <Star className="w-3 h-3 mr-1" />人気
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0 shadow-lg">
+                    <Star className="w-4 h-4 mr-1" />
+                    人気
                   </Badge>
                 )}
-                <CardHeader className="text-center pb-2">
-                  <h4 className="text-xl font-bold text-slate-900">{plan.name}</h4>
-                  <div className="mt-2">
-                    <span className="text-3xl font-extrabold text-slate-900">¥{yen.format(plan.priceMonthly)}</span>
-                    <span className="text-slate-500 ml-1 text-sm">/月</span>
+                <CardHeader className="text-center pb-4">
+                  <h4 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors duration-500">{plan.name}</h4>
+                  <div className="mt-3">
+                    <span className="text-4xl font-black text-blue-400">¥{yen.format(plan.priceMonthly)}</span>
+                    <span className="text-slate-400 ml-1 text-sm">/月</span>
                   </div>
                   {plan.target && (
-                    <p className="text-sm text-slate-600 mt-1">{plan.target}</p>
+                    <p className="text-sm text-slate-300 mt-2">{plan.target}</p>
                   )}
                 </CardHeader>
                 <CardContent className="pt-4 flex flex-col grow">
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-3 mb-8">
                     {plan.includes.map((inc, i) => {
                       const highlightGold = plan.id === 'gold' && inc.includes('アクセス解析レポート');
                       const highlightPlat = plan.id === 'platinum' && (inc.includes('ブログ化') || inc.includes('転用'));
                       return (
-                        <li key={i} className={`flex items-start gap-2 ${highlightGold || highlightPlat ? 'bg-yellow-50 rounded px-2 py-1' : ''}`}>
-                          <Check className="w-4 h-4 text-green-500 mt-0.5" />
-                          <span className="text-sm text-slate-700">{inc}</span>
+                        <li key={i} className={`flex items-start gap-3 ${highlightGold || highlightPlat ? 'bg-yellow-500/20 rounded-lg px-3 py-2' : ''}`}>
+                          <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-slate-300">{inc}</span>
                         </li>
                       );
                     })}
                   </ul>
                   <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.priceMonthly} className="mt-auto block">
-                    <Button className="w-full" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
+                    <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all duration-500 hover:scale-105" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
                       この月額で相談する
                     </Button>
                   </Link>
@@ -243,49 +276,56 @@ export default function Pricing() {
         </div>
 
         {/* 3) オプション & 通年契約特典 */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">オプション & 通年契約特典</h3>
+        <div className="mt-20">
+          <h3 className="text-3xl font-black text-white mb-8 text-center">
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              オプション & 通年契約特典
+            </span>
+          </h3>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-slate-200">
+            <Card className="border-0 shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 group hover:-translate-y-2 transition-all duration-500">
               <CardHeader>
-                <h4 className="text-xl font-semibold text-slate-900">オプション</h4>
+                <h4 className="text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors duration-500">オプション</h4>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-3 mb-8">
                   {pricing.options.map((opt, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-green-500 mt-0.5" />
-                      <span className="text-sm text-slate-700">{opt}</span>
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-slate-300">{opt}</span>
                     </li>
                   ))}
                 </ul>
                 <Link href={SITE_CONFIG.contactUrl} data-plan-id="options" data-plan-name="オプション" data-price="-">
-                  <Button variant="secondary" className="w-full" aria-label="オプションについて相談する" onClick={() => trackEvent('cta_options_click','engagement','options')}>
+                  <Button variant="secondary" className="w-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white font-bold rounded-xl shadow-lg transition-all duration-500 hover:scale-105" aria-label="オプションについて相談する" onClick={() => trackEvent('cta_options_click','engagement','options')}>
                     オプションについて相談する
                   </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="border-slate-200" id="annual-perk">
+            <Card className="border-0 shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 group hover:-translate-y-2 transition-all duration-500" id="annual-perk">
               <CardHeader>
-                <h4 className="text-xl font-semibold text-slate-900">{pricing.annualContractPerk.title}</h4>
-                <Badge className="w-fit bg-emerald-600 text-white">3ヶ月無料</Badge>
+                <h4 className="text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors duration-500">{pricing.annualContractPerk.title}</h4>
+                <Badge className="w-fit bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-0 shadow-lg">
+                  <Crown className="w-4 h-4 mr-1" />
+                  3ヶ月無料
+                </Badge>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 mb-4">
+                <ul className="space-y-3 mb-6">
                   {pricing.annualContractPerk.items.map((it, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-green-500 mt-0.5" />
-                      <span className="text-sm text-slate-700">{it}</span>
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-slate-300">{it}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-slate-500">{pricing.annualContractPerk.note}</p>
+                <p className="text-xs text-slate-400">{pricing.annualContractPerk.note}</p>
               </CardContent>
             </Card>
           </div>
-          <p className="text-xs text-slate-500 mt-6">{SITE_CONFIG.taxNote || pricing.taxNote}</p>
+          <p className="text-xs text-slate-400 mt-8 text-center">{SITE_CONFIG.taxNote || pricing.taxNote}</p>
         </div>
       </Container>
     </Section>

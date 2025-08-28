@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { getCurrentContent, getCurrentMode } from '@/content/constants';
+import { Sparkles, Award } from 'lucide-react';
 import Image from 'next/image';
 
 export default function WorksOrUseCases() {
@@ -12,24 +13,34 @@ export default function WorksOrUseCases() {
 
   if (content.worksOrUseCases.type === 'useCases' && mode === 'app') {
     return (
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              {content.worksOrUseCases.title}
+      <section className="py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-8">
+              <Award className="w-4 h-4 text-blue-400" />
+              <span className="text-sm font-medium text-white">制作実績</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent animate-gradient">
+                {content.worksOrUseCases.title}
+              </span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto font-medium">
               {content.worksOrUseCases.subtitle}
             </p>
           </div>
 
           <Tabs defaultValue="0" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-12 bg-white shadow-sm">
+            <TabsList className="grid w-full grid-cols-4 mb-12 bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
               {content.worksOrUseCases.items.map((item, index) => (
                 <TabsTrigger
                   key={index}
                   value={index.toString()}
-                  className="text-sm font-medium data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600"
+                  className="text-sm font-medium data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-300 text-slate-300 hover:text-white transition-colors duration-300"
                 >
                   {item.title.replace('システム', '')}
                 </TabsTrigger>
@@ -42,12 +53,12 @@ export default function WorksOrUseCases() {
                 value={index.toString()}
                 className="mt-8"
               >
-                <Card className="border-0 shadow-lg">
+                <Card className="border-0 shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20">
                   <CardContent className="p-12 text-center">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                    <h3 className="text-3xl font-black text-white mb-6">
                       {item.title}
                     </h3>
-                    <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                    <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                       {item.description}
                     </p>
                   </CardContent>
@@ -61,13 +72,34 @@ export default function WorksOrUseCases() {
   }
 
   return (
-    <section className="py-24 bg-slate-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            {content.worksOrUseCases.title}
+    <section className="py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+      
+      {/* Floating elements */}
+      <div className="absolute top-20 left-10 animate-float">
+        <div className="w-2 h-2 bg-blue-400 rounded-full opacity-60"></div>
+      </div>
+      <div className="absolute top-40 right-20 animate-float-delay">
+        <div className="w-3 h-3 bg-purple-400 rounded-full opacity-60"></div>
+      </div>
+      <div className="absolute bottom-20 left-1/3 animate-float">
+        <div className="w-1 h-1 bg-emerald-400 rounded-full opacity-60"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-8">
+            <Award className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-medium text-white">制作実績</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent animate-gradient">
+              {content.worksOrUseCases.title}
+            </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto font-medium">
             {content.worksOrUseCases.subtitle}
           </p>
         </div>
@@ -75,46 +107,47 @@ export default function WorksOrUseCases() {
         {/* スマホ用：横スクロール、デスクトップ用：グリッド */}
         <div className="md:hidden">
           {/* スクロールインジケーター */}
-          <div className="flex justify-center mb-4">
-            <div className="flex space-x-1">
+          <div className="flex justify-center mb-6">
+            <div className="flex space-x-2">
               {content.worksOrUseCases.items.map((_, index) => (
                 <div 
                   key={index} 
-                  className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-blue-300'}`}
+                  className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-blue-500' : 'bg-blue-300'}`}
                 ></div>
               ))}
             </div>
           </div>
           
           {/* スマホ用の横スクロールコンテナ */}
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+          <div className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory">
             {content.worksOrUseCases.items.map((item, index) => (
               <Card
                 key={index}
-                className="flex-shrink-0 w-80 border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group snap-start"
+                className="flex-shrink-0 w-80 border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 overflow-hidden group snap-start hover:scale-105 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20"
               >
                 {item.image && (
-                  <div className="relative h-40 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     <Image
                       src={item.image}
                       alt={`${item.title}のサンプル画像`}
                       width={400}
                       height={192}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     {item.category && (
-                      <Badge className="absolute top-3 left-3 bg-blue-600 text-white text-xs">
+                      <Badge className="absolute top-4 left-4 bg-blue-600/90 backdrop-blur-sm text-white border-0 shadow-lg">
                         {item.category}
                       </Badge>
                     )}
                   </div>
                 )}
-                <CardContent className="p-4">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <CardContent className="p-6 relative">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-500">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-slate-300 leading-relaxed group-hover:text-slate-200 transition-colors duration-500">
                     {item.description}
                   </p>
                 </CardContent>
@@ -128,7 +161,8 @@ export default function WorksOrUseCases() {
           {content.worksOrUseCases.items.map((item, index) => (
             <Card
               key={index}
-              className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden group"
+              className="border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 hover:-translate-y-4 overflow-hidden group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {item.image && (
                 <div className="relative h-48 overflow-hidden">
@@ -137,21 +171,22 @@ export default function WorksOrUseCases() {
                     alt={`${item.title}のサンプル画像`}
                     width={400}
                     height={192}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   {item.category && (
-                    <Badge className="absolute top-4 left-4 bg-blue-600 text-white">
+                    <Badge className="absolute top-4 left-4 bg-blue-600/90 backdrop-blur-sm text-white border-0 shadow-lg">
                       {item.category}
                     </Badge>
                   )}
                 </div>
               )}
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <CardContent className="p-8 relative">
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors duration-500">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-300 leading-relaxed group-hover:text-slate-200 transition-colors duration-500">
                   {item.description}
                 </p>
               </CardContent>
