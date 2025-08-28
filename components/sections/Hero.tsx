@@ -53,20 +53,22 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Enhanced main headline with typing effect */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 mb-8 leading-tight">
-          <TextType 
-            text={typingTexts}
-            typingSpeed={75}
-            pauseDuration={2000}
-            showCursor={true}
-            cursorCharacter="|"
-            className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent animate-gradient"
-            textColors={["#1e40af", "#6d28d9", "#047857"]}
-            initialDelay={1000}
-            loop={true}
-          />
-        </h1>
+        {/* Enhanced main headline with typing effect - Fixed height container */}
+        <div className="h-32 sm:h-40 md:h-48 lg:h-56 flex items-center justify-center mb-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 leading-tight">
+            <TextType 
+              text={typingTexts}
+              typingSpeed={75}
+              pauseDuration={2000}
+              showCursor={true}
+              cursorCharacter="|"
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent animate-gradient"
+              textColors={["#1e40af", "#6d28d9", "#047857"]}
+              initialDelay={1000}
+              loop={true}
+            />
+          </h1>
+        </div>
 
         {/* Enhanced primary claim */}
         <p className="text-2xl md:text-3xl text-slate-700 mb-6 font-bold">
