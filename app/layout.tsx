@@ -8,6 +8,7 @@ import {
 } from '@/content/constants';
 import { StructuredData } from '@/components/ui/structured-data';
 import { GAScript, PlausibleScript } from '@/components/ui/analytics';
+import Header from '@/components/sections/Header';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -105,7 +106,10 @@ export default function RootLayout({
         <GAScript />
         <PlausibleScript />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
