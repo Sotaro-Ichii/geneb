@@ -60,7 +60,7 @@ export default function Hero() {
             showCursor={true}
             cursorCharacter="|"
             className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent animate-gradient"
-            textColors={["#2563eb", "#7c3aed", "#059669"]}
+            textColors={["#1e40af", "#6d28d9", "#047857"]}
             initialDelay={1000}
             loop={true}
           />
@@ -68,7 +68,7 @@ export default function Hero() {
 
         {/* Enhanced primary claim */}
         <p className="text-2xl md:text-3xl text-slate-700 mb-6 font-bold">
-          <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
             {SITE_CONFIG.primaryClaim}
           </span>
         </p>
