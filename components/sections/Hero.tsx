@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Container, Section } from '@/components/ui/container';
+import { Container } from '@/components/ui/container';
 import {
   getCurrentMode,
   getCurrentContent,
@@ -17,7 +17,7 @@ export default function Hero() {
   const content = getCurrentContent();
 
   return (
-    <Section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden py-16 sm:py-20 lg:py-24">
       {/* Complex background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(147,51,234,0.1)_50%,transparent_70%)]"></div>
@@ -144,6 +144,6 @@ export default function Hero() {
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }
