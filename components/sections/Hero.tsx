@@ -54,8 +54,8 @@ export default function Hero() {
         </div>
 
         {/* Enhanced main headline with typing effect - Fixed height container */}
-        <div className="h-32 sm:h-40 md:h-48 lg:h-56 flex items-center justify-center mb-8">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 leading-tight">
+        <div className="h-24 sm:h-32 md:h-40 lg:h-48 flex items-center justify-center mb-8">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
             <TextType 
               text={typingTexts}
               typingSpeed={75}
@@ -71,14 +71,14 @@ export default function Hero() {
         </div>
 
         {/* Enhanced primary claim */}
-        <p className="text-2xl md:text-3xl text-slate-700 mb-6 font-bold">
+        <p className="text-lg md:text-xl lg:text-2xl text-slate-700 mb-6 font-bold">
           <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
             {SITE_CONFIG.primaryClaim}
           </span>
         </p>
 
         {/* Enhanced subheadline */}
-        <p className="text-xl md:text-2xl text-slate-600 mb-16 max-w-3xl mx-auto font-medium leading-relaxed">
+        <p className="text-base md:text-lg lg:text-xl text-slate-600 mb-16 max-w-3xl mx-auto font-medium leading-relaxed">
           {content.hero.subheadline}
         </p>
 
@@ -87,25 +87,25 @@ export default function Hero() {
           <Link href={generateCTALink(mode, 'hero')}>
             <Button
               size="lg"
-              className="relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-6 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 overflow-hidden group"
+              className="relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-5 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 overflow-hidden group"
               aria-label={generateAriaLabel(mode, '相談', 'hero')}
             >
               <span className="relative z-10 flex items-center gap-3">
                 {content.hero.cta}
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </Button>
           </Link>
 
           <div className="flex items-center gap-2 text-slate-600">
-            <CheckCircle className="w-5 h-5 text-emerald-600" />
-            <span className="text-lg font-medium">無料相談・見積もりから</span>
+            <CheckCircle className="w-4 h-4 text-emerald-600" />
+            <span className="text-base font-medium">無料相談・見積もりから</span>
           </div>
         </div>
 
         {/* Enhanced 最安例バナー */}
         <div className="mb-16">
-          <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200 text-emerald-800 text-lg shadow-lg">
+          <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200 text-emerald-800 text-base shadow-lg">
             <Star className="w-5 h-5 text-emerald-600" />
             <span className="font-bold">最安例</span>
             <span className="font-medium">
@@ -116,18 +116,18 @@ export default function Hero() {
 
         {/* Enhanced Trust indicators */}
         <div className="mt-20">
-          <p className="text-lg text-slate-500 mb-8 font-medium">安心の実績</p>
+          <p className="text-base text-slate-500 mb-8 font-medium">安心の実績</p>
           <div className="grid grid-cols-3 gap-12 max-w-2xl mx-auto">
             <div className="text-center group">
-              <div className="text-4xl font-black text-blue-600 group-hover:scale-110 transition-transform duration-300">50+</div>
+              <div className="text-3xl font-black text-blue-600 group-hover:scale-110 transition-transform duration-300">50+</div>
               <div className="text-sm text-slate-600 font-medium mt-2">制作実績</div>
             </div>
             <div className="text-center group">
-              <div className="text-4xl font-black text-purple-600 group-hover:scale-110 transition-transform duration-300">98%</div>
+              <div className="text-3xl font-black text-purple-600 group-hover:scale-110 transition-transform duration-300">98%</div>
               <div className="text-sm text-slate-600 font-medium mt-2">満足度</div>
             </div>
             <div className="text-center group">
-              <div className="text-4xl font-black text-emerald-600 group-hover:scale-110 transition-transform duration-300">3日</div>
+              <div className="text-3xl font-black text-emerald-600 group-hover:scale-110 transition-transform duration-300">3日</div>
               <div className="text-sm text-slate-600 font-medium mt-2">最短納期</div>
             </div>
           </div>
