@@ -76,11 +76,11 @@ export default function Hero() {
 
         {/* Enhanced CTA Button */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Link href={generateCTALink(mode, 'hero')}>
+          <Link href="https://line.me/R/ti/p/@627lwncl" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               className="relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-5 text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border-0 overflow-hidden group"
-              aria-label={generateAriaLabel(mode, '相談', 'hero')}
+              aria-label="LINEで相談する"
             >
               <span className="relative z-10 flex items-center gap-3">
                 {content.hero.cta}
