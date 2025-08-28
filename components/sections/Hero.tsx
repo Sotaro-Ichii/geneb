@@ -11,7 +11,6 @@ import {
 } from '@/content/constants';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Hero() {
   const mode = getCurrentMode();
@@ -25,17 +24,7 @@ export default function Hero() {
       <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
 
       <Container className="relative z-10 text-center">
-        {/* Logo */}
-        <div className="mb-8">
-          <Image
-            src="/logo.png"
-            alt={`${SITE_CONFIG.brand}のロゴ`}
-            width={120}
-            height={120}
-            className="mx-auto rounded-2xl shadow-lg"
-            priority
-          />
-        </div>
+        {/* Logo removed as requested */}
 
         {/* Brand badge */}
         <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full px-4 py-2 mb-8 shadow-sm">
