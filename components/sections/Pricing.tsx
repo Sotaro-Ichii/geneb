@@ -55,7 +55,7 @@ export default function Pricing() {
           <h3 className="text-2xl font-bold text-slate-900 mb-4">制作プラン（買い切り）</h3>
           <div className="grid md:grid-cols-3 gap-8">
             {pricing.production.map((plan) => (
-              <Card key={plan.id} className="relative border-slate-200">
+              <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
                 <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white">
                   キャンペーン
                 </Badge>
@@ -67,7 +67,7 @@ export default function Pricing() {
                   </div>
                   <p className="text-sm text-slate-600 mt-1">{plan.target}</p>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-4 flex flex-col grow">
                   <ul className="space-y-2 mb-6">
                     {plan.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2">
@@ -77,7 +77,7 @@ export default function Pricing() {
                     ))}
                   </ul>
                   <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.campaignPrice}>
-                    <Button className="w-full" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
+                    <Button className="w-full mt-auto" aria-label={`${plan.name}を相談する`} onClick={() => trackEvent('cta_production_click','engagement', `${plan.id}_${plan.name}`, plan.campaignPrice)}>
                       このプランで相談する
                     </Button>
                   </Link>
@@ -92,7 +92,7 @@ export default function Pricing() {
           <h3 className="text-2xl font-bold text-slate-900 mb-4">月額プラン（維持・更新）</h3>
           <div className="grid md:grid-cols-3 gap-8">
             {pricing.monthly.map((plan) => (
-              <Card key={plan.id} className="relative border-slate-200">
+              <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
                 {(plan.id === 'gold' || plan.id === 'platinum') && (
                   <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white">
                     <Star className="w-3 h-3 mr-1" />人気
@@ -108,7 +108,7 @@ export default function Pricing() {
                     <p className="text-sm text-slate-600 mt-1">{plan.target}</p>
                   )}
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-4 flex flex-col grow">
                   <ul className="space-y-2 mb-6">
                     {plan.includes.map((inc, i) => {
                       const highlightGold = plan.id === 'gold' && inc.includes('アクセス解析レポート');
@@ -122,7 +122,7 @@ export default function Pricing() {
                     })}
                   </ul>
                   <Link href={SITE_CONFIG.contactUrl} data-plan-id={plan.id} data-plan-name={plan.name} data-price={plan.priceMonthly}>
-                    <Button className="w-full" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
+                    <Button className="w-full mt-auto" aria-label={`${plan.name}月額で相談する`} onClick={() => trackEvent('cta_monthly_click','engagement', `${plan.id}_${plan.name}`, plan.priceMonthly)}>
                       この月額で相談する
                     </Button>
                   </Link>
