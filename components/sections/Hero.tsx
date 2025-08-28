@@ -27,7 +27,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-24">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 lg:py-16">
       {/* Prism background */}
       <div className="absolute inset-0">
         <Prism
@@ -46,7 +46,7 @@ export default function Hero() {
 
       <Container className="relative z-10 text-center">
         {/* Enhanced brand badge */}
-        <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md border border-blue-200 rounded-full px-6 py-3 mb-12 shadow-lg">
+        <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md border border-blue-200 rounded-full px-6 py-3 mb-8 shadow-lg">
           <Sparkles className="w-5 h-5 text-blue-600" />
           <span className="text-sm font-semibold text-slate-700">
             {SITE_CONFIG.brand}
@@ -54,7 +54,7 @@ export default function Hero() {
         </div>
 
         {/* Enhanced main headline with typing effect - Fixed height container */}
-        <div className="h-24 sm:h-32 md:h-40 lg:h-48 flex items-center justify-center mb-8">
+        <div className="h-20 sm:h-24 md:h-28 lg:h-32 flex items-center justify-center mb-6">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
             <TextType 
               text={typingTexts}
@@ -71,19 +71,19 @@ export default function Hero() {
         </div>
 
         {/* Enhanced primary claim */}
-        <p className="text-lg md:text-xl lg:text-2xl text-slate-700 mb-6 font-bold">
+        <p className="text-lg md:text-xl lg:text-2xl text-slate-700 mb-4 font-bold">
           <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
             {SITE_CONFIG.primaryClaim}
           </span>
         </p>
 
         {/* Enhanced subheadline */}
-        <p className="text-base md:text-lg lg:text-xl text-slate-600 mb-16 max-w-3xl mx-auto font-medium leading-relaxed">
+        <p className="text-base md:text-lg lg:text-xl text-slate-600 mb-10 max-w-3xl mx-auto font-medium leading-relaxed">
           {content.hero.subheadline}
         </p>
 
         {/* Enhanced CTA Button */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
           <Link href={generateCTALink(mode, 'hero')}>
             <Button
               size="lg"
@@ -104,7 +104,7 @@ export default function Hero() {
         </div>
 
         {/* Enhanced 最安例バナー */}
-        <div className="mb-16">
+        <div className="mb-10">
           <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200 text-emerald-800 text-base shadow-lg">
             <Star className="w-5 h-5 text-emerald-600" />
             <span className="font-bold">最安例</span>
@@ -115,9 +115,9 @@ export default function Hero() {
         </div>
 
         {/* Enhanced Trust indicators */}
-        <div className="mt-20">
-          <p className="text-base text-slate-500 mb-8 font-medium">安心の実績</p>
-          <div className="grid grid-cols-3 gap-12 max-w-2xl mx-auto">
+        <div className="mt-12">
+          <p className="text-base text-slate-500 mb-6 font-medium">安心の実績</p>
+          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="text-center group">
               <div className="text-3xl font-black text-blue-600 group-hover:scale-110 transition-transform duration-300">50+</div>
               <div className="text-sm text-slate-600 font-medium mt-2">制作実績</div>
