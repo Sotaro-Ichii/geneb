@@ -11,7 +11,7 @@ import {
   generateCTALink,
   generateAriaLabel,
 } from '@/content/constants';
-import { ArrowRight, Sparkles, CheckCircle, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle, Star } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {
@@ -45,14 +45,6 @@ export default function Hero() {
       </div>
 
       <Container className="relative z-10 text-center">
-        {/* Enhanced brand badge */}
-        <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md border border-blue-200 rounded-full px-6 py-3 mb-8 shadow-lg">
-          <Sparkles className="w-5 h-5 text-blue-600" />
-          <span className="text-sm font-semibold text-slate-700">
-            {SITE_CONFIG.brand}
-          </span>
-        </div>
-
         {/* Enhanced main headline with typing effect - Fixed height container */}
         <div className="h-20 sm:h-24 md:h-28 lg:h-32 flex items-center justify-center mb-6">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
