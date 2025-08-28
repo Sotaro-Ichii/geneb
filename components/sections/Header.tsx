@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { SITE_CONFIG, getCurrentMode, generateAriaLabel, generateCTALink } from '@/content/constants';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
@@ -20,8 +21,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-        <Link href="/" className="font-semibold text-slate-900" aria-label={`${SITE_CONFIG.brand}のホーム`}>
-          {SITE_CONFIG.brand}
+        <Link href="/" className="flex items-center gap-2" aria-label={`${SITE_CONFIG.brand}のホーム`}>
+          <Image src="/logo.png" alt={`${SITE_CONFIG.brand}のロゴ`} width={28} height={28} className="rounded" />
+          <span className="font-semibold text-slate-900">{SITE_CONFIG.brand}</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm text-slate-600">
