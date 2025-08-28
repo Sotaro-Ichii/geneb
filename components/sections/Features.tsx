@@ -52,30 +52,30 @@ export default function Features() {
   const content = getCurrentContent();
 
   return (
-    <section className="py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.08),transparent_50%)]"></div>
       
       {/* Floating elements */}
       <div className="absolute top-20 left-10 animate-float">
-        <div className="w-2 h-2 bg-blue-400 rounded-full opacity-60"></div>
+        <div className="w-2 h-2 bg-blue-400 rounded-full opacity-40"></div>
       </div>
       <div className="absolute top-40 right-20 animate-float-delay">
-        <div className="w-3 h-3 bg-purple-400 rounded-full opacity-60"></div>
+        <div className="w-3 h-3 bg-purple-400 rounded-full opacity-40"></div>
       </div>
       <div className="absolute bottom-20 left-1/3 animate-float">
-        <div className="w-1 h-1 bg-emerald-400 rounded-full opacity-60"></div>
+        <div className="w-1 h-1 bg-emerald-400 rounded-full opacity-40"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-8">
-            <Sparkles className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-medium text-white">なぜ選ばれるのか</span>
+          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md border border-blue-200 rounded-full px-4 py-2 mb-8">
+            <Sparkles className="w-4 h-4 text-blue-600" />
+            <span className="text-sm font-medium text-slate-700">なぜ選ばれるのか</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent animate-gradient">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent animate-gradient">
               {content.features.title}
             </span>
           </h2>
@@ -104,26 +104,22 @@ export default function Features() {
               return (
                 <Card
                   key={index}
-                  className="flex-shrink-0 w-80 border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 snap-start group hover:scale-105"
+                  className="flex-shrink-0 w-80 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-md border border-blue-200 snap-start group hover:scale-105"
                 >
                   <CardContent className="p-8 text-center relative overflow-hidden">
-                    {/* Background glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
                     {/* Icon container with enhanced styling */}
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8 mt-4 group-hover:scale-110 transition-transform duration-500 border border-white/20">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="relative w-20 h-20 bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl flex items-center justify-center mx-auto mb-8 mt-4 group-hover:scale-110 transition-transform duration-500 border border-blue-200">
                       {IconComponent ? (
-                        <IconComponent className="w-10 h-10 text-blue-400 relative z-10 group-hover:text-white transition-colors duration-500" />
+                        <IconComponent className="w-10 h-10 text-blue-600 relative z-10 group-hover:text-blue-700 transition-colors duration-500" />
                       ) : (
-                        <Sparkles className="w-10 h-10 text-blue-400 relative z-10 group-hover:text-white transition-colors duration-500" />
+                        <Sparkles className="w-10 h-10 text-blue-600 relative z-10 group-hover:text-blue-700 transition-colors duration-500" />
                       )}
                     </div>
                     
-                    <h3 className="text-xl font-bold text-white mb-4 relative z-10 group-hover:text-blue-300 transition-colors duration-500">
+                    <h3 className="text-xl font-bold text-slate-900 mb-4 relative z-10 group-hover:text-blue-700 transition-colors duration-500">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-300 leading-relaxed relative z-10 group-hover:text-slate-200 transition-colors duration-500">
+                    <p className="text-slate-600 leading-relaxed relative z-10 group-hover:text-slate-700 transition-colors duration-500">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -141,27 +137,23 @@ export default function Features() {
             return (
               <Card
                 key={index}
-                className="border-0 shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 hover:-translate-y-4 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 group overflow-hidden"
+                className="border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 bg-white/90 backdrop-blur-md border border-blue-200 group overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-8 text-center relative">
-                  {/* Background glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
                   {/* Icon container with enhanced styling */}
-                  <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8 mt-4 group-hover:scale-110 transition-transform duration-500 border border-white/20">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative w-20 h-20 bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl flex items-center justify-center mx-auto mb-8 mt-4 group-hover:scale-110 transition-transform duration-500 border border-blue-200">
                     {IconComponent ? (
-                      <IconComponent className="w-10 h-10 text-blue-400 relative z-10 group-hover:text-white transition-colors duration-500" />
+                      <IconComponent className="w-10 h-10 text-blue-600 relative z-10 group-hover:text-blue-700 transition-colors duration-500" />
                     ) : (
-                      <Sparkles className="w-10 h-10 text-blue-400 relative z-10 group-hover:text-white transition-colors duration-500" />
+                      <Sparkles className="w-10 h-10 text-blue-600 relative z-10 group-hover:text-blue-700 transition-colors duration-500" />
                     )}
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white mb-4 relative z-10 group-hover:text-blue-300 transition-colors duration-500">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4 relative z-10 group-hover:text-blue-700 transition-colors duration-500">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-300 leading-relaxed relative z-10 group-hover:text-slate-200 transition-colors duration-500">
+                  <p className="text-slate-600 leading-relaxed relative z-10 group-hover:text-slate-700 transition-colors duration-500">
                     {feature.description}
                   </p>
                 </CardContent>
