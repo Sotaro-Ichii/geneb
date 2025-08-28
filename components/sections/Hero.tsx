@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
+import TextType from '@/components/ui/text-type';
 import {
   getCurrentMode,
   getCurrentContent,
@@ -15,6 +16,14 @@ import Link from 'next/link';
 export default function Hero() {
   const mode = getCurrentMode();
   const content = getCurrentContent();
+
+  // タイピングエフェクト用のテキスト配列
+  const typingTexts = [
+    content.hero.headline,
+    "学生向けポートフォリオ制作",
+    "フリーランス向けサイト制作",
+    "企業向けコーポレートサイト制作"
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden py-16 sm:py-20 lg:py-24">
@@ -42,16 +51,26 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Enhanced main headline */}
+        {/* Enhanced main headline with typing effect */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 mb-8 leading-tight">
-          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent animate-gradient">
-            {content.hero.headline}
-          </span>
+          <TextType 
+            text={typingTexts}
+            typingSpeed={75}
+            pauseDuration={2000}
+            showCursor={true}
+            cursorCharacter="|"
+            className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent animate-gradient"
+            textColors={["#2563eb", "#7c3aed", "#059669"]}
+            initialDelay={1000}
+            loop={true}
+          />
         </h1>
 
         {/* Enhanced primary claim */}
         <p className="text-2xl md:text-3xl text-slate-700 mb-6 font-bold">
-          {SITE_CONFIG.primaryClaim}
+          <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            {SITE_CONFIG.primaryClaim}
+          </span>
         </p>
 
         {/* Enhanced subheadline */}
