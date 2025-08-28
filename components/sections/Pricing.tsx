@@ -53,7 +53,7 @@ export default function Pricing() {
         {/* 1) 制作プラン（買い切り） */}
         <div className="mb-6">
           <h3 className="text-2xl font-bold text-slate-900 mb-4">制作プラン（買い切り）</h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {pricing.production.map((plan) => (
               <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
                 <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-600 text-white">
@@ -90,7 +90,7 @@ export default function Pricing() {
         {/* 2) 月額プラン（維持・更新） */}
         <div className="mt-16 mb-6">
           <h3 className="text-2xl font-bold text-slate-900 mb-4">月額プラン（維持・更新）</h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {pricing.monthly.map((plan) => (
               <Card key={plan.id} className="relative border-slate-200 h-full flex flex-col">
                 {(plan.id === 'gold' || plan.id === 'platinum') && (
